@@ -19,7 +19,5 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', views.homepage),
-    path('about/', views.about),
+    path('', views.landing_page, name='landing_page'),
 ]
