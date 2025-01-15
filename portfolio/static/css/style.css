@@ -208,7 +208,7 @@ section {
 
     .portfolio-nav button {
         width: 80%; /* Make buttons take up more space */
-        margin: 5px 0; /* Increase space between buttons */
+        margin: px 0; /* Increase space between buttons */
         padding: 12px 20px; /* Add more padding to make buttons easier to tap */
         font-size: 1.1em; /* Increase font size for better readability */
     }
@@ -312,25 +312,3 @@ section {
         height: 150px; /* Further reduce carousel image size */
     }
 }
-
-/* Scroll Up Button */
-#scroll-up-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    padding: 10px;
-    font-size: 18px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: none;
-    z-index: 1000;
-}
-
-#scroll-up-btn:hover {
-    background-color: #555;
-}
-
-

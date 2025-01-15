@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aura Lens</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
     <nav>
@@ -106,10 +107,29 @@
         </div>
     </section>
 
-    <section id="contact-us">
-        <h1>Contact Us</h1>
-        <p>{{ contact_us }}</p>
-    </section>
+    <section id="contact-us" style="background-color: #000000; color: #ffffff; padding: 50px 0; text-align: center;">
+        <h1 style="margin-bottom: 20px;">CONTACT US</h1>
+        <p style="margin-bottom: 20px;">{{ contact_us }}</p>
+    
+        <!-- Social Media Links -->
+        <div style="margin-bottom: 20px;">
+            <a href="{{ contact_details.social_media.facebook }}" target="_blank" style="margin: 0 10px; color: #ffffff;"><i class="fab fa-facebook"></i></a>
+            <a href="{{ contact_details.social_media.linkedin }}" target="_blank" style="margin: 0 10px; color: #ffffff;"><i class="fab fa-linkedin"></i></a>
+            <a href="{{ contact_details.social_media.youtube }}" target="_blank" style="margin: 0 10px; color: #ffffff;"><i class="fab fa-youtube"></i></a>
+            <a href="{{ contact_details.social_media.instagram }}" target="_blank" style="margin: 0 10px; color: #ffffff;"><i class="fab fa-instagram"></i></a>
+        </div>
+    
+        <!-- Contact Details -->
+        <div style="margin-bottom: 20px; font-size: 18px;">
+            <p>{{ contact_details.phone1 }} | {{ contact_details.phone2 }}</p>
+            <p><a href="mailto:{{ contact_details.email }}" style="color: #ffffff;">{{ contact_details.email }}</a></p>
+        </div>
+    
+        <!-- Address -->
+        <div style="font-size: 16px;">
+            <p>{{ contact_details.address }}</p>
+        </div>
+    </section>    
 
     <footer style="background-color:  #000000; color: #ffffff; padding: 20px 0; text-align: center;">
         <p>© 2024 Aura Lens Studio. All Rights Reserved.</p>
