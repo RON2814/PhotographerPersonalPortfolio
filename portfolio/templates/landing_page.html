@@ -20,51 +20,54 @@
 
     <section id="about-us">
         <h1>Aura Lens Studio</h1>
-        <p>{{ about_us }}</p>
+        <div class="about-us-content">
+            <img src="{% static 'images/profile.png' %}" alt="Aura Lens Studio Profile" class="profile-image">
+            <p>{{ about_us }}</p>
+        </div>
         <a href="#contact-us" class="btn-contact">Contact Us</a>
-    </section>
+    </section>    
 
     <section id="services">
         <h1>Services</h1>
         <div class="carousel-container">
             <div class="carousel">
                 <div class="carousel-item">
-                    <img src="{{ service1_image }}" alt="Nature Shoot">
+                    <img src="{% static 'images/nature_services.png' %}" alt="Nature Shoot">
                     <div>
                         <h2>Nature Shoot</h2>
                         <p>Explore the beauty of nature through stunning shots of landscapes, wildlife, and natural wonders.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ service2_image }}" alt="Studio Shoot">
+                    <img src="{% static 'images/studio_services.png' %}" alt="Studio Shoot">
                     <div>
                         <h2>Studio Shoot</h2>
                         <p>Bring out your best self in our studio with professional portraits, headshots, and family photos.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ service3_image }}" alt="Wedding Shoot">
+                    <img src="{% static 'images/wedding_services.png' %}" alt="Wedding Shoot">
                     <div>
                         <h2>Wedding Shoot</h2>
                         <p>Capture the love and joy of your special day with timeless wedding photos that tell your unique story.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ service4_image }}" alt="Product Shoot">
+                    <img src="{% static 'images/product_services.png' %}" alt="Product Shoot">
                     <div>
                         <h2>Product Shoot</h2>
                         <p>Showcase your products in high-quality images that highlight their features and boost your brand.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ service5_image }}" alt="Fashion Shoot">
+                    <img src="{% static 'images/fashion_services.png' %}" alt="Fashion Shoot">
                     <div>
                         <h2>Fashion Shoot</h2>
                         <p>Capture the latest trends and styles with creative and vibrant fashion photography.</p>
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img src="{{ service6_image }}" alt="Sports Shoot">
+                    <img src="{% static 'images/sports_services.png' %}" alt="Sports Shoot">
                     <div>
                         <h2>Sports Shoot</h2>
                         <p>Freeze the action and excitement of your favorite sports with dynamic, high-energy shots.</p>
@@ -76,7 +79,7 @@
                 <button class="carousel-button" onclick="nextSlide()">&#10095;</button>
             </div>
         </div>
-    </section>
+    </section>    
 
     <section id="portfolio">
         <h1>Portfolio</h1>
@@ -98,7 +101,6 @@
             <div class="portfolio-item {{ project.category }}">
                 <h2>{{ project.title }}</h2>
                 <img src="{{ project.image }}" alt="{{ project.title }}">
-                <p>{{ project.description }}</p>
             </div>
             {% endfor %}
         </div>
@@ -113,6 +115,9 @@
         <p>© 2024 Aura Lens Studio. All Rights Reserved.</p>
     </footer>
     
+    <!-- Scroll Up Button -->
+    <button id="scroll-up-btn" title="Go to top">&#8593;</button>
+
     <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
