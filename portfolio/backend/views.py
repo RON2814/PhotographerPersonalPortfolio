@@ -1,7 +1,48 @@
-# from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
+from backend.models import PortfolioProject
+from backend.forms import PortfolioProjectForm
 
+# Create a project
+def create_project(request):
+    if request.method == 'POST':
+        form = PortfolioProjectForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('project_list')
+    else:
+        form = PortfolioProjectForm()
+    return render(request, 'create_project.html', {'form': form})
+
+# Read (list) projects
+def project_list(request):
+    projects = PortfolioProject.objects.all()
+    return render(request, 'project_list.html', {'projects': projects})
+
+# Update a project
+def update_project(request, pk):
+    project = get_object_or_404(PortfolioProject, pk=pk)
+    if request.method == 'POST':
+        form = PortfolioProjectForm(request.POST, request.FILES, instance=project)
+        if form.is_valid():
+            form.save()
+            return redirect('project_list')
+    else:
+        form = PortfolioProjectForm(instance=project)
+    return render(request, 'update_project.html', {'form': form})
+
+# Delete a project
+def delete_project(request, pk):
+    project = get_object_or_404(PortfolioProject, pk=pk)
+    if request.method == 'POST':
+        project.delete()
+        return redirect('project_list')
+    return render(request, 'delete_project.html', {'project': project})
+
+# Landing page
 def landing_page(request):
+    # Fetch portfolio projects dynamically from the database
+    portfolio_projects = PortfolioProject.objects.all()
+
     context = {
         'about_us': (
             "Aura Lens Studio is where life’s beauty meets the art of photography. "
@@ -18,16 +59,8 @@ def landing_page(request):
             {'name': "Fashion Shoot", 'description': "Creative and vibrant fashion photography."},
             {'name': "Sports Shoot", 'description': "Dynamic, high-energy shots of sports moments."},
         ],
-        'portfolio': [
-            {'title': "Nature Project 1", 'image': "images/nature1.png", 'description': "Description of nature project 1."},
-            {'title': "Nature Project 2", 'image': "images/nature2.png", 'description': "Description of nature project 2."},
-            {'title': "Nature Project 3", 'image': "images/nature3.png", 'description': "Description of nature project 3."},
-            {'title': "Wedding Project 1", 'image': "images/wedding1.png", 'description': "Description of wedding project 1."},
-            {'title': "Wedding Project 2", 'image': "images/wedding2.png", 'description': "Description of wedding project 2."},
-            {'title': "Wedding Project 3", 'image': "images/wedding3.png", 'description': "Description of wedding project 3."},
-            {'title': "Fashion Project 1", 'image': "images/fashion1.png", 'description': "Description of fashion project 1."},
-            {'title': "Sports Project 1", 'image': "images/sports1.png", 'description': "Description of sports project 1."},
-        ],
+        # Use the dynamically fetched portfolio data
+        'portfolio': portfolio_projects,
         'contact_us': (
             "Feel free to reach out to us via email, phone, or visit us at our studio."
         ),

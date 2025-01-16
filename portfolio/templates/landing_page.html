@@ -4,11 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aura Lens</title>
+    <title>Aura Lens Studio</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
+    <!-- Navigation Bar -->
     <nav>
         <div class="brand">AURA LENS</div>
         <ul>
@@ -19,61 +20,32 @@
         </ul>
     </nav>
 
+    <!-- About Us Section -->
     <section id="about-us">
         <h1>Aura Lens Studio</h1>
         <div class="about-us-content">
             <img src="{% static 'images/profile.png' %}" alt="Aura Lens Studio Profile" class="profile-image">
-            <p>{{ about_us }}</p>
+            <p>{{ about_us|default:"Welcome to Aura Lens Studio! We specialize in professional photography." }}</p>
         </div>
         <a href="#contact-us" class="btn-contact">Contact Us</a>
     </section>    
 
+    <!-- Services Section -->
     <section id="services">
-        <h1>Services</h1>
+        <h1>Our Services</h1>
         <div class="carousel-container">
             <div class="carousel">
+                {% for service in services %}
                 <div class="carousel-item">
-                    <img src="{% static 'images/nature_services.png' %}" alt="Nature Shoot">
+                    <img src="{% static service.image %}" alt="{{ service.name|default:'Service Image' }}">
                     <div>
-                        <h2>Nature Shoot</h2>
-                        <p>Explore the beauty of nature through stunning shots of landscapes, wildlife, and natural wonders.</p>
+                        <h2>{{ service.name }}</h2>
+                        <p>{{ service.description }}</p>
                     </div>
                 </div>
-                <div class="carousel-item">
-                    <img src="{% static 'images/studio_services.png' %}" alt="Studio Shoot">
-                    <div>
-                        <h2>Studio Shoot</h2>
-                        <p>Bring out your best self in our studio with professional portraits, headshots, and family photos.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{% static 'images/wedding_services.png' %}" alt="Wedding Shoot">
-                    <div>
-                        <h2>Wedding Shoot</h2>
-                        <p>Capture the love and joy of your special day with timeless wedding photos that tell your unique story.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{% static 'images/product_services.png' %}" alt="Product Shoot">
-                    <div>
-                        <h2>Product Shoot</h2>
-                        <p>Showcase your products in high-quality images that highlight their features and boost your brand.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{% static 'images/fashion_services.png' %}" alt="Fashion Shoot">
-                    <div>
-                        <h2>Fashion Shoot</h2>
-                        <p>Capture the latest trends and styles with creative and vibrant fashion photography.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="{% static 'images/sports_services.png' %}" alt="Sports Shoot">
-                    <div>
-                        <h2>Sports Shoot</h2>
-                        <p>Freeze the action and excitement of your favorite sports with dynamic, high-energy shots.</p>
-                    </div>
-                </div>
+                {% empty %}
+                <p>No services are available at the moment. Check back later!</p>
+                {% endfor %}
             </div>
             <div class="carousel-controls">
                 <button class="carousel-button" onclick="prevSlide()">&#10094;</button>
@@ -82,8 +54,9 @@
         </div>
     </section>    
 
+    <!-- Portfolio Section -->
     <section id="portfolio">
-        <h1>Portfolio</h1>
+        <h1>Our Portfolio</h1>
 
         <!-- Portfolio Navigation -->
         <div class="portfolio-nav">
@@ -101,43 +74,49 @@
             {% for project in portfolio %}
             <div class="portfolio-item {{ project.category }}">
                 <h2>{{ project.title }}</h2>
-                <img src="{{ project.image }}" alt="{{ project.title }}">
+                {% if project.image %}
+                <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                {% else %}
+                <img src="{% static 'images/placeholder.png' %}" alt="No Image Available">
+                {% endif %}
+                <p>{{ project.description|default:"Description not available for this project." }}</p>
             </div>
+            {% empty %}
+            <p>No projects found in this category.</p>
             {% endfor %}
         </div>
     </section>
 
-    <section id="contact-us" style="background-color: #000000; color: #ffffff; padding: 50px 0; text-align: center;">
-        <h1 style="margin-bottom: 20px;">CONTACT US</h1>
-        <p style="margin-bottom: 20px;">{{ contact_us }}</p>
-    
+    <!-- Contact Us Section -->
+    <section id="contact-us" class="contact-section">
+        <h1>Contact Us</h1>
+        <p>{{ contact_us|default:"Feel free to reach out to us for any inquiries or collaborations!" }}</p>
+
         <!-- Social Media Links -->
-        <div style="margin-bottom: 20px;">
-            <a href="{{ contact_details.social_media.facebook }}" target="_blank" style="margin: 0 10px; color: #ffffff;"><i class="fab fa-facebook"></i></a>
-            <a href="{{ contact_details.social_media.linkedin }}" target="_blank" style="margin: 0 10px; color: #ffffff;"><i class="fab fa-linkedin"></i></a>
-            <a href="{{ contact_details.social_media.youtube }}" target="_blank" style="margin: 0 10px; color: #ffffff;"><i class="fab fa-youtube"></i></a>
-            <a href="{{ contact_details.social_media.instagram }}" target="_blank" style="margin: 0 10px; color: #ffffff;"><i class="fab fa-instagram"></i></a>
+        <div class="social-media">
+            <a href="{{ contact_details.social_media.facebook }}" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="{{ contact_details.social_media.linkedin }}" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="{{ contact_details.social_media.youtube }}" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="{{ contact_details.social_media.instagram }}" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
-    
+
         <!-- Contact Details -->
-        <div style="margin-bottom: 20px; font-size: 18px;">
+        <div class="contact-details">
             <p>{{ contact_details.phone1 }} | {{ contact_details.phone2 }}</p>
-            <p><a href="mailto:{{ contact_details.email }}" style="color: #ffffff;">{{ contact_details.email }}</a></p>
-        </div>
-    
-        <!-- Address -->
-        <div style="font-size: 16px;">
+            <p><a href="mailto:{{ contact_details.email }}">{{ contact_details.email }}</a></p>
             <p>{{ contact_details.address }}</p>
         </div>
     </section>    
 
-    <footer style="background-color:  #000000; color: #ffffff; padding: 20px 0; text-align: center;">
+    <!-- Footer Section -->
+    <footer>
         <p>© 2024 Aura Lens Studio. All Rights Reserved.</p>
     </footer>
     
     <!-- Scroll Up Button -->
     <button id="scroll-up-btn" title="Go to top">&#8593;</button>
 
+    <!-- JavaScript -->
     <script src="{% static 'js/main.js' %}"></script>
 </body>
 </html>
