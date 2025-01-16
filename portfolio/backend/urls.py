@@ -14,19 +14,22 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.contrib import admin
 from django.urls import path
-from . import views
+from backend import views  # Import your app's views
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('', views.landing_page, name='landing_page'),
+    path('', views.landing_page, name='landing_page'),  # Landing page
+    path('admin/', admin.site.urls),  # Add this line for the admin panel
     path('projects/', views.project_list, name='project_list'),
     path('projects/create/', views.create_project, name='create_project'),
     path('projects/update/<int:pk>/', views.update_project, name='update_project'),
     path('projects/delete/<int:pk>/', views.delete_project, name='delete_project'),
 ]
 
-# Only serve media files in development mode
+# Add media file serving in development
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
