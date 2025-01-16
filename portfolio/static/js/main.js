@@ -26,19 +26,27 @@ function filterPortfolio(category) {
     });
 }
 
-// Show the scroll-up button when the user scrolls down
-window.onscroll = function() {
-    const scrollUpButton = document.getElementById("scroll-up-btn");
+// JavaScript for Scroll-Up Button
+document.addEventListener("DOMContentLoaded", function () {
+    const scrollUpBtn = document.getElementById("scroll-up-btn");
 
-    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
-        scrollUpButton.style.display = "block";
-    } else {
-        scrollUpButton.style.display = "none";
-    }
-};
+    // Show/hide the button when scrolling
+    window.addEventListener("scroll", function () {
+        if (window.scrollY > 200) { // Show the button after scrolling down 200px
+            scrollUpBtn.classList.add("show");
+            scrollUpBtn.classList.remove("hide");
+        } else {
+            scrollUpBtn.classList.add("hide");
+            scrollUpBtn.classList.remove("show");
+        }
+    });
 
-// Scroll to the top when the user clicks the button
-document.getElementById("scroll-up-btn").onclick = function() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-};
+    // Scroll to the top when the button is clicked
+    scrollUpBtn.addEventListener("click", function () {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth" // Smooth scrolling effect
+        });
+    });
+});
 
