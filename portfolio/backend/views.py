@@ -52,12 +52,12 @@ def landing_page(request):
             "Looking for the perfect photographer for your next project? Let’s make it happen!"
         ),
         'services': [
-            {'name': "Nature Shoot", 'description': "Explore the beauty of nature through stunning shots of landscapes, wildlife, and natural wonders."},
-            {'name': "Studio Shoot", 'description': "Professional portraits, headshots, and family photos in our studio."},
-            {'name': "Wedding Shoot", 'description': "Timeless wedding photos that capture the joy of your special day."},
-            {'name': "Product Shoot", 'description': "High-quality images that showcase your products' features."},
-            {'name': "Fashion Shoot", 'description': "Creative and vibrant fashion photography."},
-            {'name': "Sports Shoot", 'description': "Dynamic, high-energy shots of sports moments."},
+            {'name': "Nature Shoot", 'description': "Explore the beauty of nature through stunning shots of landscapes, wildlife, and natural wonders.", 'image': 'images/nature_services.png'},
+            {'name': "Studio Shoot", 'description': "Professional portraits, headshots, and family photos in our studio.", 'image': 'images/studio_services.png'},
+            {'name': "Wedding Shoot", 'description': "Timeless wedding photos that capture the joy of your special day.", 'image': 'images/wedding_services.png'},
+            {'name': "Product Shoot", 'description': "High-quality images that showcase your products' features.", 'image': 'images/product_services.png'},
+            {'name': "Fashion Shoot", 'description': "Creative and vibrant fashion photography.", 'image': 'images/fashion_services.png'},
+            {'name': "Sports Shoot", 'description': "Dynamic, high-energy shots of sports moments.", 'image': 'images/sports_services.png'},
         ],
         # Use the dynamically fetched portfolio data
         'portfolio': portfolio_projects,
