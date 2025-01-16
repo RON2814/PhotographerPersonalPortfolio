@@ -347,3 +347,80 @@ section {
     transform: translateY(20px);
 }
 
+/* Contact Us Section */
+.contact-section {
+    background-color: 101010; /* Matches the navigation background */
+    color: white;
+    text-align: center;
+    padding: 40px 20px; /* Add padding for spacing */
+    border-top: 2px solid #333; /* Add a subtle border for separation */
+}
+
+.contact-section h1 {
+    font-size: 2.5em; /* Large heading */
+    margin-bottom: 20px; /* Add space below the heading */
+    color: #E6E6E6; /* Light text for contrast */
+}
+
+.contact-section p {
+    font-size: 1.2em; /* Larger font for better readability */
+    margin-bottom: 20px;
+    color: #ccc; /* Softer grey for text */
+}
+
+.contact-section .social-media {
+    margin-bottom: 20px; /* Add spacing below social media icons */
+}
+
+.contact-section .social-media a {
+    margin: 0 10px; /* Space between icons */
+    color: white;
+    font-size: 2em; /* Increase size of icons */
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.contact-section .social-media a:hover {
+    color: #E6E6E6; /* Change color on hover */
+    transform: scale(1.2); /* Enlarge slightly on hover */
+}
+
+.contact-section .contact-details {
+    font-size: 1.1em; /* Slightly larger font */
+    margin-top: 20px; /* Space above contact details */
+    line-height: 1.6; /* Better spacing between lines */
+}
+
+.contact-section .contact-details a {
+    color: #E6E6E6; /* Lighter color for email links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-section .contact-details a:hover {
+    color: #ffcccc; /* Subtle hover effect for email links */
+}
+
+/* Footer */
+footer {
+    background-color: #000000; /* Dark background for contrast */
+    color: #ddd; /* Light grey text */
+    text-align: center;
+    padding: 20px;
+    font-size: 0.9em; /* Slightly smaller font size */
+    border-top: 2px solid #333; /* Subtle border for separation */
+}
+
+footer p {
+    margin: 0; /* Remove default margins */
+    line-height: 1.5; /* Better readability */
+}
+
+footer a {
+    color: #E6E6E6; /* Footer links */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #ffcccc; /* Hover color for footer links */
+}
