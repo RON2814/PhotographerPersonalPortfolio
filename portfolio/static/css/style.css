@@ -55,8 +55,19 @@ section {
     align-items: center;
     justify-content: flex-start; /* Align items to the left */
     gap: 20px;
-    flex-direction: row-reverse; /* Reverse the order of items, placing the image on the right */
+    flex-direction: row-reverse; /* Reverse the order of items, placing the image on the right */   
 }
+.about-description {
+    font-size: 20px;
+    text-align: center;
+    line-height: 1.8;
+    margin: 20px auto;
+    max-width: 800px;
+    color: #aaa7a7;
+    font-family: 'Roboto mono', sans-serif; /* Custom Google Font */
+}
+
+
 
 .about-us-content p {
     flex: 1; /* Let the text take up available space */
@@ -77,32 +88,45 @@ section {
     justify-content: center;
 }
 
-.service { 
-    border: 1px solid #ddd; 
-    padding: 10px; 
-    border-radius: 5px; 
-    width: 300px; 
+.service {
+    position: relative;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    width: 300px;
     text-align: center;
-    background-color: #222;
+    background-color: red; /* Red background for the service */
     color: white; /* Text inside services section in white */
+    overflow: hidden; /* Ensures image doesn't overflow the container */
 }
 
-.service img { 
-    width: 100%; 
-    height: 200px; 
-    object-fit: cover; 
+.service img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* Maintain the aspect ratio of the image */
     border-radius: 5px;
 }
 
-.service h2 {
-    font-size: 1.2em;
-    margin: 10px 0;
+.service-overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 10;
 }
 
-.service p {
+.service-overlay h2 {
+    font-size: 1.5em;
+    margin: 0;
+}
+
+.service-description {
+    margin-top: 20px;
     font-size: 1em;
     color: #ddd; /* Slightly grey for contrast */
 }
+
 
 .btn-contact {
     display: inline-block;
@@ -208,8 +232,8 @@ section {
 
     .portfolio-nav button {
         width: 80%; /* Make buttons take up more space */
-        margin: 5px; /* Increase space between buttons */
-        padding: 10px 15px; /* Add more padding to make buttons easier to tap */
+        margin: px 0; /* Increase space between buttons */
+        padding: 12px 20px; /* Add more padding to make buttons easier to tap */
         font-size: 1.1em; /* Increase font size for better readability */
     }
 }
@@ -311,116 +335,4 @@ section {
     .carousel-item img {
         height: 150px; /* Further reduce carousel image size */
     }
-}
-
-/* Scroll-Up Button Styles */
-#scroll-up-btn {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #333;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    text-align: center;
-    line-height: 50px;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    z-index: 1000;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
-}
-
-#scroll-up-btn.show {
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-}
-
-#scroll-up-btn.hide {
-    opacity: 0;
-    visibility: hidden;
-    transform: translateY(20px);
-}
-
-/* Contact Us Section */
-.contact-section {
-    background-color: 101010; /* Matches the navigation background */
-    color: white;
-    text-align: center;
-    padding: 40px 20px; /* Add padding for spacing */
-    border-top: 2px solid #333; /* Add a subtle border for separation */
-}
-
-.contact-section h1 {
-    font-size: 2.5em; /* Large heading */
-    margin-bottom: 20px; /* Add space below the heading */
-    color: #E6E6E6; /* Light text for contrast */
-}
-
-.contact-section p {
-    font-size: 1.2em; /* Larger font for better readability */
-    margin-bottom: 20px;
-    color: #ccc; /* Softer grey for text */
-}
-
-.contact-section .social-media {
-    margin-bottom: 20px; /* Add spacing below social media icons */
-}
-
-.contact-section .social-media a {
-    margin: 0 10px; /* Space between icons */
-    color: white;
-    font-size: 2em; /* Increase size of icons */
-    transition: transform 0.3s ease, color 0.3s ease;
-}
-
-.contact-section .social-media a:hover {
-    color: #E6E6E6; /* Change color on hover */
-    transform: scale(1.2); /* Enlarge slightly on hover */
-}
-
-.contact-section .contact-details {
-    font-size: 1.1em; /* Slightly larger font */
-    margin-top: 20px; /* Space above contact details */
-    line-height: 1.6; /* Better spacing between lines */
-}
-
-.contact-section .contact-details a {
-    color: #E6E6E6; /* Lighter color for email links */
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.contact-section .contact-details a:hover {
-    color: #ffcccc; /* Subtle hover effect for email links */
-}
-
-/* Footer */
-footer {
-    background-color: #000000; /* Dark background for contrast */
-    color: #ddd; /* Light grey text */
-    text-align: center;
-    padding: 20px;
-    font-size: 0.9em; /* Slightly smaller font size */
-    border-top: 2px solid #333; /* Subtle border for separation */
-}
-
-footer p {
-    margin: 0; /* Remove default margins */
-    line-height: 1.5; /* Better readability */
-}
-
-footer a {
-    color: #E6E6E6; /* Footer links */
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-footer a:hover {
-    color: #ffcccc; /* Hover color for footer links */
 }
